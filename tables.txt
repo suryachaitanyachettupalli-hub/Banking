@@ -1,0 +1,34 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE open_accounts (
+    surname VARCHAR(100) NOT NULL,
+    firstname VARCHAR(100) NOT NULL,
+    secondname VARCHAR(100),
+    dob DATE NOT NULL,
+    age INT NOT NULL,
+    mobile VARCHAR(10) NOT NULL,
+    gender ENUM('male', 'female', 'other') NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    aadhar CHAR(12) NOT NULL UNIQUE,
+    account_no BIGINT NOT NULL UNIQUE,
+    account_type ENUM('zero_balance', 'savings', 'current') NOT NULL,
+    initial_deposit DECIMAL(10,2),
+    fullname VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE deposits (
+    accountNo BIGINT NOT NULL,
+    accountHolder VARCHAR(255) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    depositMode ENUM('cash', 'cheque', 'online_transfer') NOT NULL
+);
+
+CREATE TABLE withdrawals (
+    accountNo BIGINT NOT NULL,
+    accountHolder VARCHAR(255) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL
+);
